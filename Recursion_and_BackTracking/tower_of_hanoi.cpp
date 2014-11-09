@@ -18,7 +18,7 @@ void Tower_of_hanoi(int n,char frompeg,char topeg,char auxpeg )
 	//Move top n-1 disk from A to B using C as auxillary
 	Tower_of_hanoi(n-1,frompeg,auxpeg,topeg);
 
-	//Move reamaining disk from A to C
+	//Move remaining disk from A to C
 	cout<<"Move disk "<<n<<" from peg "<<frompeg<<" to peg "<<topeg<<endl;
 
 	//Move n-1 disk from B to C using A as auxillary 
@@ -30,11 +30,11 @@ void Tower_of_hanoi(int n,char frompeg,char topeg,char auxpeg )
 
 int main()
 {
-	int n=3;
+	int n=5;
 	char frompeg,topeg,auxpeg;
 	frompeg='A';
-	topeg='B';
-	auxpeg='C';
+	topeg='C';
+	auxpeg='B';
 	Tower_of_hanoi(n,frompeg,topeg,auxpeg);
 
 	return 0;
