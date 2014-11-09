@@ -86,7 +86,59 @@ void InsertInLinkedList(struct ListNode **head,int data,int position)
 }
 
 
+/* 
 
+Singly Linked List Deletion
+
+Deleting the first node 
+Deleting the last node
+Deleting an intermediate node
+
+
+*/
+
+
+void DeleteNodeFromLinkedList(struct ListNode **head,int position)
+{
+	int k=1;
+	struct ListNode *p,*q;
+
+	if(*head==NULL)
+	{
+		cout<<"List Empty"<<endl;
+		return;
+	}
+
+	p=(*head)	;
+
+	/* from the beginning */
+
+	if(position==1)
+	{
+		*head=(*head)->next;
+		delete(p);
+		return;
+	}
+	else
+	{
+		//Traverse the list until the position from which we want to delete 
+		while(p!=NULL && k<position)
+		{
+			k++;
+			q=p;
+			p=p->next;
+		}
+
+		if(p==NULL)  /*At the end */
+			cout<<"Position does not exist"<<endl;
+		else
+		{
+			q->next=p->next;
+			delete(q);
+		}
+	}
+
+}
 
 
 /* Main function */
@@ -102,6 +154,13 @@ int main()
 	int len=ListLength(head);
 
 	cout<<"Length is "<<len<<endl;
+
+	DeleteNodeFromLinkedList(&head,1);
+
+	len=ListLength(head);
+
+	cout<<"Length after deletion of 1 node is "<<len<<endl;
+
 
 }
 
