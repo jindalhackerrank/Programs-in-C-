@@ -1,0 +1,27 @@
+
+Recently a journal presented an alternative implementation of the doubly linked list ADT, with insertion,traversal and deletion operations.This implementation is based on pointer differnce.Each pointer uses only one pointer field to traverse the list back and forth.
+
+typedef struct ListNode{
+	int data;
+	struct ListNode *ptrdiff;
+}
+
+
+The ptrdiff pointer fiel contains the differnce between the pointer  to the next node and the pointer to the previous node.The pointer differnece is calculated by exclusive OR operation .
+
+ptrdiff=pointer to previous node XOR pointer to next node
+
+ptrdiff of the start node (head Node) is the XOR of NULL and the next node and the pointer to the previous node.
+
+The next pointer of A is : NULL XOR B
+The next pointer of B is : A XOR C
+The next pointer of C is : B XOR D
+The next pointer of D is : C XOR NULL
+
+For the example let us assume if we are at C Node and want to move to B . We know that C's ptrdiff is defined as B XOR D . If we want to move to B performing XOR to C with D would give B 
+
+(B XOR D) XOR D =B ( D XOR D = 0)
+
+Similarly 
+
+(B XOR D ) XOR B = D (B XOR B = 0 )
