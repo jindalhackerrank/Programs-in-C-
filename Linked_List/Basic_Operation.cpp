@@ -141,6 +141,36 @@ void DeleteNodeFromLinkedList(struct ListNode **head,int position)
 }
 
 
+
+struct ListNode* RevereseLL(struct ListNode *head)
+{
+	struct ListNode *nextNode=head,*tmp=NULL;
+
+	while(head)
+	{
+		nextNode=(head)->next;
+		(head)->next=tmp;
+		tmp=(head);
+		(head)=nextNode;
+
+	
+
+	}
+	return tmp;
+}
+
+
+void displayLL(struct ListNode *head)
+{
+	struct ListNode* tmp=head;
+	while(tmp)
+	{
+		cout<<tmp->data<<"->";
+		tmp=tmp->next;
+	}
+}
+
+
 /* Main function */
 
 int main()
@@ -151,15 +181,23 @@ int main()
 	InsertInLinkedList(&head,300,1);
 	InsertInLinkedList(&head,400,1);
 
+	displayLL(head);
+
 	int len=ListLength(head);
 
 	cout<<"Length is "<<len<<endl;
 
 	DeleteNodeFromLinkedList(&head,1);
 
+	displayLL(head);
+
 	len=ListLength(head);
 
 	cout<<"Length after deletion of 1 node is "<<len<<endl;
+
+	head=RevereseLL(head);
+
+	displayLL(head);
 
 
 }
